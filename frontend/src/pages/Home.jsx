@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Home() {
     return (
@@ -11,13 +12,17 @@ function Home() {
                     </div>
 
                     <div className='buttons'>
-                        <div id='login'>Login</div>
-                        <div id='signup'>SignUp</div>
+                        <Link to={'/login'} id='login'>Login</Link>
+                        <Link id='signup'>SignUp</Link>
                     </div>
                 </div>
 
                 <div className='start'>
                     <button><span id='one'>Start</span><span id='two'>Now</span></button>
+                </div>
+
+                <div className='welcome'>
+                    <span>Welcome to QuizWhiz – The Ultimate Trivia Challenge! Ready to put your knowledge to the test?</span>
                 </div>
 
                 <div className='footer'>
