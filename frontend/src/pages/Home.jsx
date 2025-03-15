@@ -1,10 +1,22 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdAccountCircle } from "react-icons/md";
+import Footer from '../components/Footer';
 
 function Home() {
     const [authenticated, setauthenticated] = useState(true);
+    const [user, setuser] = useState({ role: 'admin' });
     const [toggle, settoggle] = useState(false);
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        if (authenticated) {
+            navigate('/quiz')
+        }
+        else {
+            navigate('/login')
+        }
+    }
 
     return (
         <>
@@ -25,11 +37,10 @@ function Home() {
 
                             <div className={`toggle-menu ${!toggle && 'd-none'}`}>
                                 <div className='menu-container'>
-                                    <span>Billa</span>
-                                    <span>Billa</span>
-                                    <span>Billa</span>
-                                    <span>Billa</span>
-                                    <span>Billa</span>
+                                    <Link>My Profile</Link>
+                                    <Link>LeaderBoard</Link>
+                                    {user.role === 'admin' && <Link>Dashboard</Link>}
+                                    <button id='logout'>Logout</button>
                                 </div>
                             </div>
                         </div>
@@ -42,16 +53,14 @@ function Home() {
                 </div>
 
                 <div className='start'>
-                    <button><span id='one'>Start</span><span id='two'>Now</span></button>
+                    <button onClick={handleClick}><span id='one'>Start</span><span id='two'>Now</span></button>
                 </div>
 
                 <div className='welcome'>
                     <span>Welcome to QuizWhiz – The Ultimate Trivia Challenge! Ready to put your knowledge to the test?</span>
                 </div>
 
-                <div className='footer'>
-                    <h3>© 2025 QuizWhiz. All rights reserved. Challenge your mind, one quiz at a time!</h3>
-                </div>
+                <Footer />
 
             </div>
         </>
