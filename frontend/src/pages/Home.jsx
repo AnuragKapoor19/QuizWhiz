@@ -7,13 +7,13 @@ function Home() {
             <div className='home'>
                 <div className="navbar">
                     <div className='logo-container'>
-                        <span className='logo'>QuizWhiz</span>
-                        <span className='line'>For the ultimate quiz wizard</span>
+                        <span className='logo'>𝕼𝖚𝖎𝖟𝖂𝖍𝖎𝖟</span>
+                        <span className='line'>𝐅𝐨𝐫 𝐭𝐡𝐞 𝐮𝐥𝐭𝐢𝐦𝐚𝐭𝐞 𝐪𝐮𝐢𝐳 𝐰𝐢𝐳𝐚𝐫𝐝 </span>
                     </div>
 
                     <div className='buttons'>
                         <Link to={'/login'} id='login'>Login</Link>
-                        <Link id='signup'>SignUp</Link>
+                        <Link to={'/signup'} id='signup'>SignUp</Link>
                     </div>
                 </div>
 
