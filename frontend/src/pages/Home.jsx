@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { MdAccountCircle } from "react-icons/md";
 
 function Home() {
+    const [authenticated, setauthenticated] = useState(true);
+    const [toggle, settoggle] = useState(false);
+
     return (
         <>
             <div className='home'>
@@ -11,10 +15,30 @@ function Home() {
                         <span className='line'>𝐅𝐨𝐫 𝐭𝐡𝐞 𝐮𝐥𝐭𝐢𝐦𝐚𝐭𝐞 𝐪𝐮𝐢𝐳 𝐰𝐢𝐳𝐚𝐫𝐝 </span>
                     </div>
 
-                    <div className='buttons'>
-                        <Link to={'/login'} id='login'>Login</Link>
-                        <Link to={'/signup'} id='signup'>SignUp</Link>
-                    </div>
+                    {authenticated
+                        ?
+                        <div className='user'>
+                            <div className='name' onClick={() => settoggle(!toggle)}>
+                                <MdAccountCircle size={40} />
+                                Hi,Anurag
+                            </div>
+
+                            <div className={`toggle-menu ${!toggle && 'd-none'}`}>
+                                <div className='menu-container'>
+                                    <span>Billa</span>
+                                    <span>Billa</span>
+                                    <span>Billa</span>
+                                    <span>Billa</span>
+                                    <span>Billa</span>
+                                </div>
+                            </div>
+                        </div>
+                        :
+                        <div className='buttons'>
+                            <Link to={'/login'} id='login'>Login</Link>
+                            <Link to={'/signup'} id='signup'>SignUp</Link>
+                        </div>
+                    }
                 </div>
 
                 <div className='start'>
