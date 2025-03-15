@@ -1,7 +1,7 @@
 .home {
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(154deg, red 50%, white 50%);
+    background-image: linear-gradient(158deg, red 50%, white 50%);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -26,7 +26,7 @@
 }
 
 .logo {
-    font-size: 80px;
+    font-size: 4rem;
     font-weight: bolder;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -39,8 +39,9 @@
 }
 
 .user {
-    margin: 20px 10% 0 0;
+    /* margin: 20px 10% 0 0; */
     position: relative;
+    padding: 10px;
 }
 
 .name {
@@ -149,7 +150,7 @@
 }
 
 .start {
-    margin: auto 5%;
+    margin: 15rem 5%;
 }
 
 .start button {
@@ -188,7 +189,7 @@
     position: absolute;
     right: -30px;
     top: 45%;
-    transform: rotate(-26deg);
+    transform: rotate(-22deg);
     font-size: 25px;
     font-weight: bolder;
     color: red;
