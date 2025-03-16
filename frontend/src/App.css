@@ -120,21 +120,21 @@
     align-items: center;
 }
 
-.menu-container a{
+.menu-container a {
     color: white;
     margin: 20px 0;
     width: fit-content;
 }
 
-.menu-container a:hover{
+.menu-container a:hover {
     transform: scale(1.1);
 }
 
-.menu-container a:active{
+.menu-container a:active {
     transform: scale(1.2);
 }
 
-#logout{
+#logout {
     font-weight: bolder;
     color: red;
     margin: 20px 0 10px 0;
@@ -145,7 +145,7 @@
     width: 100%;
 }
 
-#logout:active{
+#logout:active {
     transform: scale(1.1);
 }
 
@@ -214,7 +214,7 @@
     align-items: center;
 }
 
-#big{
+#big {
     font-size: larger;
     letter-spacing: 2px;
     margin-top: 8px;
@@ -392,4 +392,96 @@ a {
     .quiz-title {
         font-size: 2rem;
     }
+}
+
+/* Questions Page */
+.q-page {
+    background-image: linear-gradient(to bottom right, red 50%, white 50%);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.q-container {
+    background-image: linear-gradient(to bottom right, white 50%, red 50%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black;
+    height: 70vh;
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    border: 5px solid black;
+}
+
+.question {
+    font-size: 2rem;
+    font-weight: bolder;
+    font-family: cursive;
+    position: absolute;
+    top: 10%;
+    padding:0 10px;
+    word-break: break-all;
+}
+
+.options {
+    margin-top: 50px;
+    width: 100%;
+}
+
+.op {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+#option {
+    background-image: radial-gradient(circle, red, white);
+    color: black;
+    padding: 5px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    width: 200px;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 5px solid black;
+}
+
+#option:hover {
+    transform: scale(1.1);
+}
+
+#option:active {
+    transform: scale(1.2);
+}
+
+.timer-container{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer{
+    color: black;
+    border: 2px solid black;
+    background-color: white;
+    margin-top: 3px;
+    border-radius: 50%;
+    font-size: larger;
+    font-family:sans-serif;
+    width: 100px;
+    text-align: center;
 }

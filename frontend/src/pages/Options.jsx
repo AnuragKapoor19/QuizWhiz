@@ -1,7 +1,13 @@
 import React from 'react';
 import Footer from '../components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 const QuizOptions = () => {
+    const navigate = useNavigate()
+    const handleClick = () => {
+        navigate('/questions')
+    }
+
     return (
         <>
             <div className="quiz-container">
@@ -29,7 +35,7 @@ const QuizOptions = () => {
                                 <option>Hard</option>
                             </select>
                         </div>
-                        <button type="submit" className="quiz-button">Start Quiz</button>
+                        <button type="submit" className="quiz-button" onClick={handleClick}>Start Quiz</button>
                     </form>
                 </div>
             </div>
