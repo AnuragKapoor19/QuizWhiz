@@ -1,3 +1,8 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
 .home {
     height: 100vh;
     width: 100vw;
@@ -426,7 +431,7 @@ a {
     font-family: cursive;
     position: absolute;
     top: 10%;
-    padding:0 10px;
+    padding: 0 10px;
     word-break: break-all;
 }
 
@@ -465,7 +470,7 @@ a {
     transform: scale(1.2);
 }
 
-.timer-container{
+.timer-container {
     position: absolute;
     top: 0;
     width: 100%;
@@ -474,14 +479,159 @@ a {
     justify-content: center;
 }
 
-.timer{
+.timer {
     color: black;
     border: 2px solid black;
     background-color: white;
     margin-top: 3px;
     border-radius: 50%;
     font-size: larger;
-    font-family:sans-serif;
+    font-family: sans-serif;
     width: 100px;
     text-align: center;
+}
+
+
+/* Profile Page */
+
+.profile-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #e63946;
+    background-image: linear-gradient(155deg, red 50%, white 50%);
+}
+
+.profile-card {
+    border-radius: 16px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 24px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    background-image: linear-gradient(155deg, white 50%, red 50%);
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    color: red;
+}
+
+.username {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 8px 0;
+    color: red;
+}
+
+.email,
+.joined {
+    color: black;
+    margin: 4px 0;
+    font-weight: bold;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+
+.stat {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    margin: 0 4px;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.profile-actions {
+    margin-top: 16px;
+}
+
+.edit-btn,
+.logout-btn {
+    padding: 8px 16px;
+    margin: 4px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    background-color: #ffffff9e;
+    color: red;
+}
+
+
+.edit-btn:hover {
+    background-color: #ffffff;
+}
+
+.edit-btn:active {
+    background-color: #ffffffc6;
+}
+
+/* LeaderBoard Page */
+
+
+.leaderboard-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:0 20px;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    color: red;
+    background-image: radial-gradient( white, red);
+}
+
+.leaderboard-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: red;
+}
+
+.leaderboard-table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid black
+}
+
+.leaderboard-table th, .leaderboard-table td {
+    padding: 12px 16px;
+    text-align: center;
+    border: 2px solid black;
+}
+
+.leaderboard-table th {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+.leaderboard-table tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.leaderboard-table tr:hover {
+    background-color: #f1f1f1;
 }

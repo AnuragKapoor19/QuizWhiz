@@ -5,6 +5,8 @@ import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import QuizOptions from './pages/Options';
 import Questions from './pages/Questions';
+import MyProfilePage from './pages/Profile';
+import LeaderboardPage from './pages/LeaderBoard';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route exact path='/signup' element={<SignUp />} />
           <Route exact path='/quiz' element={<QuizOptions />} />
           <Route exact path='/questions' element={<Questions />} />
+          <Route exact path='/profile' element={<MyProfilePage />} />
+          <Route exact path='/leaderboard' element={<LeaderboardPage />} />
         </Routes>
       </Router>
     </>

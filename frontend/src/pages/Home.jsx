@@ -37,8 +37,8 @@ function Home() {
 
                             <div className={`toggle-menu ${!toggle && 'd-none'}`}>
                                 <div className='menu-container'>
-                                    <Link>My Profile</Link>
-                                    <Link>LeaderBoard</Link>
+                                    <Link to={'/profile'}>My Profile</Link>
+                                    <Link to={'/leaderboard'}>LeaderBoard</Link>
                                     {user.role === 'admin' && <Link>Dashboard</Link>}
                                     <button id='logout'>Logout</button>
                                 </div>
