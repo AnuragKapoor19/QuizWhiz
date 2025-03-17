@@ -1,22 +1,49 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { ContextState } from '../ContextApi';
 
 function Login() {
+  const [credentials, setcredentials] = useState({ email: '', password: '' });
+  const { setuser, setauthenticated } = ContextState();
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    setcredentials({ ...credentials, [e.target.name]: e.target.value });
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.post('http://localhost:5000/api/v1/login', { email: credentials.email, password: credentials.password }, { method: 'POST', withCredentials: true });
+
+      if (!data.success) {
+        return console.log(data.message);
+      }
+
+      await setauthenticated(true);
+      await setuser(data.user);
+      navigate('/');
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
     <>
       <div className='login-page'>
         <div className='container'>
           <h1>Login</h1>
           <div className='form-container'>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className='margin'>
-                <label for='email'>Email:</label>
-                <input id='email' type='email' required />
+                <label htmlFor='email'>Email:</label>
+                <input id='email' type='email' name='email' value={credentials.email} required onChange={handleChange} />
               </div>
 
               <div className="margin">
-                <label for='password'>Password:</label>
-                <input id='password' type='password' required />
+                <label htmlFor='password'>Password:</label>
+                <input id='password' type='password' name='password' value={credentials.password} required onChange={handleChange} />
               </div>
 
               <div className="btn-container">

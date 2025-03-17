@@ -1,13 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { MdAccountCircle } from "react-icons/md";
 import Footer from '../components/Footer';
+import { ContextState } from '../ContextApi';
+import axios from 'axios'
 
 function Home() {
-    const [authenticated, setauthenticated] = useState(true);
-    const [user, setuser] = useState({ role: 'admin' });
+    const { authenticated, setauthenticated, user, setuser } = ContextState();
     const [toggle, settoggle] = useState(false);
     const navigate = useNavigate();
+
+    const getUser = async () => {
+        try {
+            const { data } = await axios.get('http://localhost:5000/api/v1/me', { method: 'GET', withCredentials: true });
+            if (data.success) {
+                setuser(data.user)
+                setauthenticated(true);
+            }
+            else {
+                setauthenticated(false);
+                setuser(null)
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    useEffect(() => {
+        getUser();
+    }, [])
 
     const handleClick = () => {
         if (authenticated) {
@@ -15,6 +36,23 @@ function Home() {
         }
         else {
             navigate('/login')
+        }
+    }
+
+    const handleLogout = async () => {
+        try {
+            const { data } = await axios.get('http://localhost:5000/api/v1/logout', { method: 'GET', withCredentials: true });
+
+            if (!data.success) {
+                return console.log(data.message);
+            }
+
+            alert(data.message);
+            settoggle(false);
+            setauthenticated(false);
+            setuser(null);
+        } catch (error) {
+            console.log(error.message);
         }
     }
 
@@ -32,7 +70,7 @@ function Home() {
                         <div className='user'>
                             <div className='name' onClick={() => settoggle(!toggle)}>
                                 <MdAccountCircle size={40} />
-                                Hi,Anurag
+                                Hi, {String(user.username).split(' ')[0]}
                             </div>
 
                             <div className={`toggle-menu ${!toggle && 'd-none'}`}>
@@ -40,7 +78,7 @@ function Home() {
                                     <Link to={'/profile'}>My Profile</Link>
                                     <Link to={'/leaderboard'}>LeaderBoard</Link>
                                     {user.role === 'admin' && <Link>Dashboard</Link>}
-                                    <button id='logout'>Logout</button>
+                                    <button id='logout' onClick={handleLogout}>Logout</button>
                                 </div>
                             </div>
                         </div>

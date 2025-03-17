@@ -4,6 +4,12 @@ const cookieParser = require('cookie-parser')
 const app = express()
 const dotenv = require('dotenv').config()
 const PORT = process.env.PORT
+const cors = require('cors')
+
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true
+}))
 
 app.use(express.json())
 
