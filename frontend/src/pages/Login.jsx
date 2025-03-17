@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ContextState } from '../ContextApi';
+import Logo from '../components/Logo';
 
 function Login() {
   const [credentials, setcredentials] = useState({ email: '', password: '' });
@@ -15,7 +16,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:5000/api/v1/login', { email: credentials.email, password: credentials.password }, { method: 'POST', withCredentials: true });
+      const { data } = await axios.post('http://localhost:5000/api/v1/login', { email: credentials.email, password: credentials.password }, {  withCredentials: true });
 
       if (!data.success) {
         return console.log(data.message);
@@ -32,6 +33,7 @@ function Login() {
   return (
     <>
       <div className='login-page'>
+        <Logo />
         <div className='container'>
           <h1>Login</h1>
           <div className='form-container'>

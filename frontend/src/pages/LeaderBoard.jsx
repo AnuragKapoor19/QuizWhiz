@@ -1,5 +1,6 @@
 import React from 'react';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 
 const LeaderboardPage = () => {
     const leaderboardData = [
@@ -12,6 +13,7 @@ const LeaderboardPage = () => {
 
     return (
         <div className="leaderboard-page">
+            <Header />
             <h1 className="leaderboard-title">Leaderboard</h1>
             <table className="leaderboard-table">
                 <thead>

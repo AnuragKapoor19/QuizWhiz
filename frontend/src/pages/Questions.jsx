@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
+import Header from '../components/Header';
 
 const Questions = () => {
     const [count, setCount] = useState(10);
@@ -17,6 +18,7 @@ const Questions = () => {
     return (
         <>
             <div className='q-page'>
+                <Header />
                 <div className="q-container">
                     <div className='question'>
                         Q1.Which is the most beautiful country in the world?

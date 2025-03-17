@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer';
 import { useNavigate } from 'react-router-dom';
+import Header from '../components/Header';
 
 const QuizOptions = () => {
     const navigate = useNavigate()
@@ -11,6 +12,7 @@ const QuizOptions = () => {
     return (
         <>
             <div className="quiz-container">
+                <Header />
                 <h1 className="quiz-title">QuizWhiz - Get Ready!</h1>
                 <div className="quiz-box">
                     <form className="quiz-form">

@@ -39,6 +39,7 @@ const createUser = async (req, res) => {
             .cookie('token', token, { expires: new Date(Date.now() + 604800000), httpOnly: true, sameSite: 'None', secure: true })
             .json({
                 success: true,
+                user: newUser,
                 message: "User created successfully!"
             })
 

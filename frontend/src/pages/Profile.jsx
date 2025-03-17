@@ -2,18 +2,20 @@ import React from 'react';
 import { MdAccountCircle } from "react-icons/md";
 import Footer from '../components/Footer';
 import { ContextState } from '../ContextApi';
+import Header from '../components/Header';
 
 const MyProfilePage = () => {
     const { user } = ContextState();
 
     return (
         <div className="profile-page">
+            <Header />
             <div className="profile-card">
                 <div className="profile-header">
                     <div className="profile-pic"><MdAccountCircle size={100} /></div>
                     <h1 className="username">{user.username}</h1>
                     <p className="email">{user.email}</p>
-                    <p className="joined">Joined: {new Date(user.createdAt).toLocaleDateString()}</p>
+                    <p className="joined">Joined: {new Date(user.createdAt).toLocaleDateString('en-US',{year: 'numeric', month: 'long', day: '2-digit'})}</p>
                 </div>
                 <div className="profile-stats">
                     <div className="stat">
