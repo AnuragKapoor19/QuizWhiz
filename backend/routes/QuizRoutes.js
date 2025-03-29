@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.post('/question/add', authenticate, authorize('admin'), addQuestion)
 
-router.get('/questions', getQuestions)
+router.get('/questions', authenticate, getQuestions)
 
 router.put('/question/:id', authenticate, authorize('admin'), updateQuestion)
 

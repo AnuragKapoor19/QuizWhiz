@@ -39,13 +39,13 @@ const addQuestion = async (req, res) => {
 
 const getQuestions = async (req, res) => {
     try {
-        const { category, difficulty } = req.query;
+        const { category, difficulty, limit } = req.query;
 
-        const questions = await Quiz.findAll({ where: { category: category, difficulty: difficulty } })
+        const questions = await Quiz.findAll({ where: { category: category, difficulty: difficulty }, limit: parseInt(limit) })
 
         if (questions.length > 0) {
             return res.status(200).json({
-                success: false,
+                success: true,
                 questions
             })
         }
