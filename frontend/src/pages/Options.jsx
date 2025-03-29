@@ -9,7 +9,7 @@ const QuizOptions = () => {
     const navigate = useNavigate()
     const { setquestions } = ContextState();
     const Categories = ['Science & Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
-    const [credentials, setcredentials] = useState({ category: 'General Knowledge', limit: '10', difficulty: 'Easy' });
+    const [credentials, setcredentials] = useState({ category: 'General Knowledge', limit: 10, difficulty: 'Easy' });
 
     const handleChange = (e) => {
         setcredentials({ ...credentials, [e.target.name]: e.target.value })
@@ -42,8 +42,8 @@ const QuizOptions = () => {
                             <label className="quiz-label">Select Category:</label>
                             <select className="quiz-select" name='category' value={credentials.category} onChange={handleChange}>
                                 <option>General Knowledge</option>
-                                {Categories.map(category => (
-                                    <option>{category}</option>
+                                {Categories.map((category, index) => (
+                                    <option key={index}>{category}</option>
                                 ))}
                             </select>
                         </div>

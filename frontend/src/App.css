@@ -483,6 +483,38 @@ a {
     transform: scale(1.2);
 }
 
+.correct{
+    color: white;
+    background-color: green;
+    padding: 5px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    width: 200px;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 5px solid white;
+}
+
+.wrong{
+    color: black;
+    background-color: red;
+    padding: 5px;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    width: 200px;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 5px solid black;
+}
+
 .timer-container {
     position: absolute;
     top: 0;
