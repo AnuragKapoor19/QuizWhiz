@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import Logo from '../components/Logo'
+import { BsTrophyFill } from "react-icons/bs";
 import Footer from '../components/Footer'
 import { ContextState } from '../ContextApi';
+import { useNavigate } from 'react-router-dom';
 
 const Questions = () => {
     const [count, setCount] = useState(10);
     const { questions } = ContextState();
     const [selected, setSelected] = useState('')
     const [index, setindex] = useState(0)
+    const [finished, setfinished] = useState(false)
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (count > 0) {
@@ -19,9 +23,14 @@ const Questions = () => {
         }
 
         if (count === 0) {
-            setindex(index + 1);
-            setCount(10);
-            setSelected('');
+            if (questions.length - 1 !== index) {
+                setindex(index + 1);
+                setCount(10);
+                setSelected('');
+            }
+            else {
+                setfinished(true);
+            }
         }
     }, [count]);
 
@@ -33,31 +42,57 @@ const Questions = () => {
                     <>
                         <div className='q-page'>
                             <Logo />
-                            <div className="q-container">
-                                <div className='question'>
-                                    Q1.{questions[index].question}
-                                </div>
+                            {finished
+                                ?
+                                <div className="q-container">
+                                    <i id='trophy'><BsTrophyFill size={80} /></i>
+                                    <span id='congo'>Congratulations</span>
+                                    <span id='score-heading'>
+                                        Your Score
+                                    </span>
 
-                                <div className='options'>
-                                    <div className="op">
-                                        <div id={(selected === '' || selected !== 'A') && 'option'} className={selected !== '' && selected === 'A' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('A')}>A. {questions[index].optionA}</div>
-                                        <div id={(selected === '' || selected !== 'B') && 'option'} className={selected !== '' && selected === 'B' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('B')}>B. {questions[index].optionB}</div>
+                                    <span id='score'>
+                                        5/{questions.length}
+                                    </span>
+
+                                    <span id='greet'>
+                                        You did a great job, Learn more by taking another quiz
+                                    </span>
+
+                                    <button id='home' onClick={()=> navigate('/')}>
+                                        Back to Home
+                                    </button>
+                                </div>
+                                :
+                                <div className="q-container">
+                                    <div className='question'>
+                                        Q{index + 1}.{questions[index].question}
                                     </div>
 
-                                    <div className="op">
-                                        <div id={(selected === '' || selected !== 'C') && 'option'} className={selected !== '' && selected === 'C' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('C')}>C. {questions[index].optionC}</div>
-                                        <div id={(selected === '' || selected !== 'D') && 'option'} className={selected !== '' && selected === 'D' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('D')}>D. {questions[index].optionD}</div>
-                                    </div>
+                                    <div className='options'>
+                                        <div className="op">
+                                            <div id={(selected === '' || selected !== 'A') && 'option'} className={selected !== '' && selected === 'A' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('A')}>A. {questions[index].optionA}</div>
+                                            <div id={(selected === '' || selected !== 'B') && 'option'} className={selected !== '' && selected === 'B' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('B')}>B. {questions[index].optionB}</div>
+                                        </div>
 
+                                        <div className="op">
+                                            <div id={(selected === '' || selected !== 'C') && 'option'} className={selected !== '' && selected === 'C' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('C')}>C. {questions[index].optionC}</div>
+                                            <div id={(selected === '' || selected !== 'D') && 'option'} className={selected !== '' && selected === 'D' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('D')}>D. {questions[index].optionD}</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+
+                        {!finished &&
+                            <div className="timer-container">
+                                <div className='timer'>
+                                    <h1>{count}</h1>
                                 </div>
                             </div>
-                        </div>
-
-                        <div className="timer-container">
-                            <div className='timer'>
-                                <h1>{count}</h1>
-                            </div>
-                        </div>
+                        }
 
                         <Footer />
                     </>

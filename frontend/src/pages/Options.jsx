@@ -9,7 +9,7 @@ const QuizOptions = () => {
     const navigate = useNavigate()
     const { setquestions } = ContextState();
     const Categories = ['Science & Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
-    const [credentials, setcredentials] = useState({ category: 'General Knowledge', limit: 10, difficulty: 'Easy' });
+    const [credentials, setcredentials] = useState({ category: 'General Knowledge', limit: 5, difficulty: 'Easy' });
 
     const handleChange = (e) => {
         setcredentials({ ...credentials, [e.target.name]: e.target.value })
@@ -49,7 +49,10 @@ const QuizOptions = () => {
                         </div>
                         <div className="quiz-group">
                             <label className="quiz-label">Number of Questions:</label>
-                            <input type="number" min="1" max="10" placeholder="10" className="quiz-input" name='limit' value={credentials.limit} onChange={handleChange} />
+                            <select className="quiz-input" name='limit' value={credentials.limit} onChange={handleChange}>
+                                <option>5</option>
+                                <option>10</option>
+                            </select>
                         </div>
                         <div className="quiz-group">
                             <label className="quiz-label">Difficulty:</label>
