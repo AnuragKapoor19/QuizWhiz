@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Questions = () => {
     const [count, setCount] = useState(10);
-    const { questions } = ContextState();
+    const { questions, score, setscore } = ContextState();
     const [selected, setSelected] = useState('')
     const [index, setindex] = useState(0)
     const [finished, setfinished] = useState(false)
@@ -34,6 +34,37 @@ const Questions = () => {
         }
     }, [count]);
 
+    useEffect(() => {
+        setSelected('')
+    }, [index]);
+
+    useEffect(() => {
+        if (selected === questions[index].correctAnswer) {
+            setscore(score + 1);
+        }
+    }, [selected])
+
+    const handleOptionClick = (value) => {
+        setSelected(value);
+
+        setTimeout(() => {
+            if (questions.length - 1 !== index) {
+                setindex(index + 1);
+                setCount(10);
+            }
+            else {
+                setfinished(true)
+            }
+        }, 1500);
+    }
+
+    const handleClick = () => {
+        setindex(0);
+        setSelected('');
+        setscore(0);
+        setCount(10);
+        navigate('/');
+    }
 
     return (
         <>
@@ -52,14 +83,14 @@ const Questions = () => {
                                     </span>
 
                                     <span id='score'>
-                                        5/{questions.length}
+                                        {score}/{questions.length}
                                     </span>
 
                                     <span id='greet'>
                                         You did a great job, Learn more by taking another quiz
                                     </span>
 
-                                    <button id='home' onClick={()=> navigate('/')}>
+                                    <button id='home' onClick={handleClick}>
                                         Back to Home
                                     </button>
                                 </div>
@@ -71,13 +102,13 @@ const Questions = () => {
 
                                     <div className='options'>
                                         <div className="op">
-                                            <div id={(selected === '' || selected !== 'A') && 'option'} className={selected !== '' && selected === 'A' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('A')}>A. {questions[index].optionA}</div>
-                                            <div id={(selected === '' || selected !== 'B') && 'option'} className={selected !== '' && selected === 'B' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('B')}>B. {questions[index].optionB}</div>
+                                            <div id={(selected === '' || selected !== 'A') && 'option'} className={selected !== '' && selected === 'A' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => handleOptionClick('A')}>A. {questions[index].optionA}</div>
+                                            <div id={(selected === '' || selected !== 'B') && 'option'} className={selected !== '' && selected === 'B' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => handleOptionClick('B')}>B. {questions[index].optionB}</div>
                                         </div>
 
                                         <div className="op">
-                                            <div id={(selected === '' || selected !== 'C') && 'option'} className={selected !== '' && selected === 'C' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('C')}>C. {questions[index].optionC}</div>
-                                            <div id={(selected === '' || selected !== 'D') && 'option'} className={selected !== '' && selected === 'D' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => setSelected('D')}>D. {questions[index].optionD}</div>
+                                            <div id={(selected === '' || selected !== 'D') && 'option'} className={selected !== '' && selected === 'D' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => handleOptionClick('C')}>D. {questions[index].optionD}</div>
+                                            <div id={(selected === '' || selected !== 'C') && 'option'} className={selected !== '' && selected === 'C' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => handleOptionClick('D')}>C. {questions[index].optionC}</div>
                                         </div>
 
                                     </div>
