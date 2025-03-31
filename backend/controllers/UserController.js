@@ -129,6 +129,42 @@ const getUser = async (req, res) => {
     }
 }
 
+const updateUser = async (req, res) => {
+    try {
+        const { username, email } = req.body;
+
+        const userExists = await User.findOne({ where: { id: req.user.id } });
+
+        if (!userExists) {
+            return res.status(400).json({
+                success: false,
+                message: 'No User Found!'
+            })
+        }
+
+        const result = await User.update({ username, email }, { where: { id: req.user.id } });
+
+        if (result[0] > 0) {
+            res.status(200).json({
+                success: true,
+                message: 'User Updated Successfully!'
+            })
+        }
+        else {
+            res.status(400).json({
+                success: false,
+                message: 'User not found or no changes made'
+            })
+        }
+
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
 //Admin Controllers
 const deleteUser = async (req, res) => {
     try {
@@ -155,4 +191,4 @@ const deleteUser = async (req, res) => {
     }
 }
 
-module.exports = { createUser, login, logout, getUser, deleteUser };
+module.exports = { createUser, login, logout, getUser, deleteUser, updateUser };
