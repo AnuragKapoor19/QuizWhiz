@@ -47,7 +47,7 @@ const Header = () => {
                             <div className='menu-container'>
                                 <Link to={'/profile'}>My Profile</Link>
                                 <Link to={'/leaderboard'}>LeaderBoard</Link>
-                                {user.role === 'admin' && <Link>Dashboard</Link>}
+                                {user.role === 'admin' && <Link to={'/admin/dashboard'}>Dashboard</Link>}
                                 <button id='logout' onClick={handleLogout}>Logout</button>
                             </div>
                         </div>

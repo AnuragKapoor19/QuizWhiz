@@ -8,6 +8,7 @@ import Questions from './pages/Questions';
 import MyProfilePage from './pages/Profile';
 import LeaderboardPage from './pages/LeaderBoard';
 import UpdateProfile from './pages/UpdateProfile';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route exact path='/profile' element={<MyProfilePage />} />
           <Route exact path='/update/profile' element={<UpdateProfile />} />
           <Route exact path='/leaderboard' element={<LeaderboardPage />} />
+          <Route exact path='/admin/dashboard' element={<Dashboard />} />
         </Routes>
       </Router>
     </>
