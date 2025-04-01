@@ -55,7 +55,7 @@ const Questions = () => {
             else {
                 setfinished(true)
             }
-        }, 1500);
+        }, 500);
     }
 
     const handleClick = () => {
@@ -107,8 +107,8 @@ const Questions = () => {
                                         </div>
 
                                         <div className="op">
-                                            <div id={(selected === '' || selected !== 'D') && 'option'} className={selected !== '' && selected === 'D' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => handleOptionClick('C')}>D. {questions[index].optionD}</div>
-                                            <div id={(selected === '' || selected !== 'C') && 'option'} className={selected !== '' && selected === 'C' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => handleOptionClick('D')}>C. {questions[index].optionC}</div>
+                                            <div id={(selected === '' || selected !== 'C') && 'option'} className={selected !== '' && selected === 'C' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => handleOptionClick('C')}>C. {questions[index].optionC}</div>
+                                            <div id={(selected === '' || selected !== 'D') && 'option'} className={selected !== '' && selected === 'D' && selected === questions[index].correctAnswer ? 'correct' : 'wrong'} onClick={() => handleOptionClick('D')}>D. {questions[index].optionD}</div>
                                         </div>
 
                                     </div>
