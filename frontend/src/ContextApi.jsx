@@ -7,9 +7,11 @@ const ContextProvider = ({ children }) => {
     const [user, setuser] = useState({ role: 'admin' })
     const [questions, setquestions] = useState([])
     const [score, setscore] = useState(0)
+    const [users, setusers] = useState([])
+    const [allQuestions, setallQuestions] = useState([])
 
     return (
-        <Context.Provider value={{ authenticated, setauthenticated, user, setuser, questions, setquestions, score, setscore }}>
+        <Context.Provider value={{ authenticated, setauthenticated, user, setuser, questions, setquestions, score, setscore, users, setusers, allQuestions, setallQuestions }}>
             {children}
         </Context.Provider>
     )

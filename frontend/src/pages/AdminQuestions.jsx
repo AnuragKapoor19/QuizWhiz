@@ -1,80 +1,28 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
-const questions = [
-    {
-        id: 1,
-        title: "Sample Question 1",
-        question: "What is the capital of France?",
-        optionA: "Berlin",
-        optionB: "Madrid",
-        optionC: "Paris",
-        optionD: "Rome",
-        correctAnswer: "Paris",
-        difficulty: "Easy",
-        category: "Geography",
-        createdAt: "2025-04-01",
-        createdBy: "Admin",
-    },
-    {
-        id: 1,
-        title: "Sample Question 1",
-        question: "What is the capital of France?",
-        optionA: "Berlin",
-        optionB: "Madrid",
-        optionC: "Paris",
-        optionD: "Rome",
-        correctAnswer: "Paris",
-        difficulty: "Easy",
-        category: "Geography",
-        createdAt: "2025-04-01",
-        createdBy: "Admin",
-    },    {
-        id: 1,
-        title: "Sample Question 1",
-        question: "What is the capital of France?",
-        optionA: "Berlin",
-        optionB: "Madrid",
-        optionC: "Paris",
-        optionD: "Rome",
-        correctAnswer: "Paris",
-        difficulty: "Easy",
-        category: "Geography",
-        createdAt: "2025-04-01",
-        createdBy: "Admin",
-    },    {
-        id: 1,
-        title: "Sample Question 1",
-        question: "What is the capital of France?",
-        optionA: "Berlin",
-        optionB: "Madrid",
-        optionC: "Paris",
-        optionD: "Rome",
-        correctAnswer: "Paris",
-        difficulty: "Easy",
-        category: "Geography",
-        createdAt: "2025-04-01",
-        createdBy: "Admin",
-    },    {
-        id: 1,
-        title: "Sample Question 1",
-        question: "What is the capital of France?",
-        optionA: "Berlin",
-        optionB: "Madrid",
-        optionC: "Paris",
-        optionD: "Rome",
-        correctAnswer: "Paris",
-        difficulty: "Easy",
-        category: "Geography",
-        createdAt: "2025-04-01",
-        createdBy: "Admin",
-    },
-];
+import { ContextState } from "../ContextApi";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AdminQuestions = () => {
-    const handleDelete = (id) => {
-        console.log("Deleting question with ID:", id);
+    const { allQuestions } = ContextState();
+    const navigate = useNavigate();
+
+    const handleDelete = async (id) => {
+        try {
+            const { data } = await axios.delete(`http://localhost:5000/api/v1/question/${id}`, { withCredentials: true });
+
+            if (!data.success) {
+                return console.log(data.message);
+            }
+
+            alert(data.message)
+            navigate('/admin/dashboard');
+
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
     const handleUpdate = (id) => {
@@ -103,7 +51,7 @@ const AdminQuestions = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {questions.map((q) => (
+                            {allQuestions.map((q) => (
                                 <tr key={q.id}>
                                     <td>{q.id}</td>
                                     <td>{q.title}</td>
@@ -112,7 +60,7 @@ const AdminQuestions = () => {
                                     <td>{q.correctAnswer}</td>
                                     <td>{q.difficulty}</td>
                                     <td>{q.category}</td>
-                                    <td>{q.createdAt}</td>
+                                    <td>{new Date(q.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' })}</td>
                                     <td>{q.createdBy}</td>
                                     <td>
                                         <button className="update-btn" onClick={() => handleUpdate(q.id)}>Update</button>

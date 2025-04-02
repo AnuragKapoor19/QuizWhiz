@@ -3,10 +3,11 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recha
 import axios from 'axios';
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
+import { ContextState } from "../ContextApi";
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const [users, setusers] = useState([]);
+    const { users, setusers, allQuestions, setallQuestions } = ContextState();
 
     const getAllUsers = async () => {
         try {
@@ -23,13 +24,29 @@ const Dashboard = () => {
         }
     }
 
+    const getAllQuestions = async () => {
+        try {
+            const { data } = await axios.get('http://localhost:5000/api/v1/admin/questions', { withCredentials: true });
+
+            if (!data.success) {
+                return console.log(data.message);
+            }
+
+            setallQuestions(data.questions);
+
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
     useEffect(() => {
         getAllUsers();
+        getAllQuestions();
     }, [])
 
     const data = [
         { name: "Users", value: users.length },
-        { name: "Quizzes", value: 45 },
+        { name: "Quizzes", value: allQuestions.length },
     ];
 
     return (
@@ -49,7 +66,7 @@ const Dashboard = () => {
                             </div>
                             <div className="stat-box" onClick={() => navigate('/admin/questions')}>
                                 <h3>Total Questions</h3>
-                                <p>45</p>
+                                <p>{allQuestions.length}</p>
                             </div>
                         </section>
 

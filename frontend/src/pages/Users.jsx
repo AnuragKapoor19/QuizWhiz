@@ -1,25 +1,28 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { ContextState } from "../ContextApi";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const users = [
-    { id: 1, name: "John Doe", email: "john@example.com", role: "Admin" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User" },
-    { id: 3, name: "Alice Johnson", email: "alice@example.com", role: "Moderator" },
-    { id: 1, name: "John Doe", email: "john@example.com", role: "Admin" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User" },
-    { id: 3, name: "Alice Johnson", email: "alice@example.com", role: "Moderator" },    { id: 1, name: "John Doe", email: "john@example.com", role: "Admin" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User" },
-    { id: 3, name: "Alice Johnson", email: "alice@example.com", role: "Moderator" },    { id: 1, name: "John Doe", email: "john@example.com", role: "Admin" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User" },
-    { id: 3, name: "Alice Johnson", email: "alice@example.com", role: "Moderator" },    { id: 1, name: "John Doe", email: "john@example.com", role: "Admin" },
-    { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User" },
-    { id: 3, name: "Alice Johnson", email: "alice@example.com", role: "Moderator" },
-];
 
 const Users = () => {
-    const handleDelete = (id) => {
-        console.log("Deleting user with ID:", id);
+    const { users } = ContextState();
+    const navigate = useNavigate('/');
+
+    const handleDelete = async (id) => {
+        try {
+            const { data } = await axios.delete(`http://localhost:5000/api/v1/admin/delete/${id}`, { withCredentials: true });
+
+            if (!data.success) {
+                return console.log(data.message);
+            }
+
+            alert(data.message);
+            navigate('/admin/dashboard');
+        } catch (error) {
+            console.log(error.message);
+        }
     };
 
     return (
@@ -40,7 +43,7 @@ const Users = () => {
                         <tbody>
                             {users.map((user) => (
                                 <tr key={user.id}>
-                                    <td>{user.name}</td>
+                                    <td>{user.username}</td>
                                     <td>{user.email}</td>
                                     <td>{user.role}</td>
                                     <td>

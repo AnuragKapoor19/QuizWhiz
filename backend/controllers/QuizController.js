@@ -50,7 +50,7 @@ const getQuestions = async (req, res) => {
             })
         }
         else {
-            res.status(200).json({
+            res.status(400).json({
                 success: false,
                 message: "No question found"
             })
@@ -111,4 +111,30 @@ const updateQuestion = async (req, res) => {
     }
 }
 
-module.exports = { addQuestion, getQuestions, deleteQuestion, updateQuestion };
+const getAllQuestions = async (req, res) => {
+    try {
+        const questions = await Quiz.findAll();
+
+        if (questions.length > 0) {
+            return res.status(200).json({
+                success: true,
+                questions
+            })
+        }
+        else {
+            res.status(400).json({
+                success: false,
+                message: "No question found"
+            })
+        }
+
+
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+module.exports = { addQuestion, getQuestions, deleteQuestion, updateQuestion, getAllQuestions };
