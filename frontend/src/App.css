@@ -945,3 +945,82 @@ tbody tr:nth-child(even) {
         white-space: nowrap;
     }
 }
+
+/* Admin Questions Page */
+
+.admin-questions {
+    width: 95%;
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    max-height: 60vh;
+    overflow-y: auto;
+}
+
+h2 {
+    color: #d32f2f;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background: #d32f2f;
+    color: white;
+}
+
+th,
+td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f8d7da;
+}
+
+.update-btn,
+.delete-btn {
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.3s;
+    margin: 2px;
+    width: 100px;
+}
+
+.update-btn {
+    background: #1976d2;
+    color: white;
+}
+
+.update-btn:hover {
+    background: #1565c0;
+}
+
+.delete-btn {
+    background: #d32f2f;
+    color: white;
+}
+
+.delete-btn:hover {
+    background: #b71c1c;
+}
+
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}

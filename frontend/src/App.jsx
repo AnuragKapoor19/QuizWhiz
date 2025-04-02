@@ -10,6 +10,7 @@ import LeaderboardPage from './pages/LeaderBoard';
 import UpdateProfile from './pages/UpdateProfile';
 import Dashboard from './pages/Dashboard';
 import Users from './pages/Users';
+import AdminQuestions from './pages/AdminQuestions';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route exact path='/leaderboard' element={<LeaderboardPage />} />
           <Route exact path='/admin/dashboard' element={<Dashboard />} />
           <Route exact path='/admin/users' element={<Users />} />
+          <Route exact path='/admin/questions' element={<AdminQuestions />} />
         </Routes>
       </Router>
     </>
