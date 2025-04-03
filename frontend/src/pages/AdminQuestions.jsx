@@ -35,6 +35,9 @@ const AdminQuestions = () => {
             <Header />
             <div className="admin-users-page">
                 <div className="admin-questions">
+                    <div className="add-question" onClick={() => navigate('/admin/add/question')}>
+                        NEW
+                    </div>
                     <h2>Manage Questions</h2>
                     <table>
                         <thead>

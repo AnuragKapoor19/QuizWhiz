@@ -2,9 +2,9 @@ const Quiz = require("../models/Quiz");
 
 const addQuestion = async (req, res) => {
     try {
-        const { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category, createdBy } = req.body;
+        const { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category } = req.body;
 
-        if (!title || !question || !optionA || !optionB || !optionC || !optionD || !correctAnswer || !category || !createdBy) {
+        if (!title || !question || !optionA || !optionB || !optionC || !optionD || !correctAnswer || !category) {
             return res.status(400).json({
                 success: false,
                 message: "Please enter all details"
@@ -21,7 +21,7 @@ const addQuestion = async (req, res) => {
             correctAnswer,
             difficulty,
             category,
-            createdBy
+            createdBy: req.user.id
         })
 
         res.status(200).json({

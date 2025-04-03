@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard';
 import Users from './pages/Users';
 import AdminQuestions from './pages/AdminQuestions';
 import UpdateQuestion from './pages/UpdateQuestion';
+import AddQuestion from './pages/AddQuestion';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route exact path='/admin/users' element={<Users />} />
           <Route exact path='/admin/questions' element={<AdminQuestions />} />
           <Route exact path='/admin/update/question' element={<UpdateQuestion />} />
+          <Route exact path='/admin/add/question' element={<AddQuestion />} />
         </Routes>
       </Router>
     </>

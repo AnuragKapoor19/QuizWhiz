@@ -959,6 +959,24 @@ tbody tr:nth-child(even) {
     text-align: center;
     max-height: 60vh;
     overflow-y: auto;
+    position: relative;
+}
+
+.add-question{
+    position: absolute;
+    background-color: red;
+    color: white;
+    padding: 15px 10px;
+    font-size: larger;
+    font-weight: bolder;
+    font-family: cursive;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.add-question:active{
+    transform: scale(1.2);
 }
 
 h2 {

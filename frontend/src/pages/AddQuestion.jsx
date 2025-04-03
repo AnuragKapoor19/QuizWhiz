@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import Footer from '../components/Footer';
-import { ContextState } from '../ContextApi';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function UpdateQuestion() {
+function AddQuestion() {
     const Categories = ['Science & Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
-    const { updateQuestion } = ContextState();
     const navigate = useNavigate();
-    const { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category } = updateQuestion;
-    const [credentials, setcredentials] = useState({ title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category });
+    const [credentials, setcredentials] = useState({ title: '', question: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: '', difficulty: '', category: '' });
 
     const handleChange = (e) => {
         setcredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -21,7 +18,7 @@ function UpdateQuestion() {
 
         try {
             const { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category } = credentials;
-            const { data } = await axios.put(`http://localhost:5000/api/v1/question/${updateQuestion.id}`, { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category }, { withCredentials: true, 'Content-Type': 'application/json' })
+            const { data } = await axios.post(`http://localhost:5000/api/v1/question/add`, { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category }, { withCredentials: true, 'Content-Type': 'application/json' })
 
             if (!data.success) {
                 return console.log(data.message);
@@ -39,28 +36,28 @@ function UpdateQuestion() {
             <div className="update-question-page">
                 <div className="update-form-container">
                     <form className='update-form' onSubmit={handleSubmit}>
-                        <h1>Update Question</h1>
+                        <h1>Add New Question</h1>
 
                         <label htmlFor='title'>Title</label>
-                        <input id='title' type='text' name='title' value={credentials.title} onChange={handleChange} />
+                        <input id='title' type='text' name='title' value={credentials.title} onChange={handleChange} required />
 
                         <label htmlFor='question'>Question</label>
-                        <input id='question' type='text' name='question' value={credentials.question} onChange={handleChange} />
+                        <input id='question' type='text' name='question' value={credentials.question} onChange={handleChange} required />
 
                         <label htmlFor='A'>Option A</label>
-                        <input id='A' type='text' name='optionA' value={credentials.optionA} onChange={handleChange} />
+                        <input id='A' type='text' name='optionA' value={credentials.optionA} onChange={handleChange} required />
 
                         <label htmlFor='B'>Option B</label>
-                        <input id='B' type='text' name='optionB' value={credentials.optionB} onChange={handleChange} />
+                        <input id='B' type='text' name='optionB' value={credentials.optionB} onChange={handleChange} required />
 
                         <label htmlFor='C'>Option C</label>
-                        <input id='C' type='text' name='optionC' value={credentials.optionC} onChange={handleChange} />
+                        <input id='C' type='text' name='optionC' value={credentials.optionC} onChange={handleChange} required />
 
                         <label htmlFor='D'>Option D</label>
-                        <input id='D' type='text' name='optionD' value={credentials.optionD} onChange={handleChange} />
+                        <input id='D' type='text' name='optionD' value={credentials.optionD} onChange={handleChange} required />
 
                         <label htmlFor='correct'>Correct Answer</label>
-                        <select id='correct' name='correctAnswer' value={credentials.correctAnswer} onChange={handleChange}>
+                        <select id='correct' name='correctAnswer' value={credentials.correctAnswer} onChange={handleChange} required>
                             <option>A</option>
                             <option>B</option>
                             <option>C</option>
@@ -68,14 +65,14 @@ function UpdateQuestion() {
                         </select>
 
                         <label htmlFor='difficulty'>Difficulty</label>
-                        <select id='difficulty' name='difficulty' value={credentials.difficulty} onChange={handleChange}>
+                        <select id='difficulty' name='difficulty' value={credentials.difficulty} onChange={handleChange} required>
                             <option>Easy</option>
                             <option>Medium</option>
                             <option>Hard</option>
                         </select>
 
                         <label htmlFor='category'>Category</label>
-                        <select id='category' name='category' value={credentials.category} onChange={handleChange}>
+                        <select id='category' name='category' value={credentials.category} onChange={handleChange} required>
                             <option>General Knowledge</option>
                             {Categories.map((category, index) => (
                                 <option key={index}>{category}</option>
@@ -83,7 +80,7 @@ function UpdateQuestion() {
                         </select>
 
                         <div className="update-question-btn">
-                            <button type='submit'>Update</button>
+                            <button type='submit'>Add</button>
                         </div>
                     </form>
                 </div>
@@ -93,4 +90,4 @@ function UpdateQuestion() {
     )
 }
 
-export default UpdateQuestion
+export default AddQuestion
