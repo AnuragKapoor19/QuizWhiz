@@ -6,7 +6,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const AdminQuestions = () => {
-    const { allQuestions } = ContextState();
+    const { allQuestions, setupdateQuestion } = ContextState();
     const navigate = useNavigate();
 
     const handleDelete = async (id) => {
@@ -25,8 +25,9 @@ const AdminQuestions = () => {
         }
     };
 
-    const handleUpdate = (id) => {
-        console.log("Updating question with ID:", id);
+    const handleUpdate = (question) => {
+        setupdateQuestion(question);
+        navigate(`/admin/update/question`)
     };
 
     return (
@@ -63,7 +64,7 @@ const AdminQuestions = () => {
                                     <td>{new Date(q.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: '2-digit' })}</td>
                                     <td>{q.createdBy}</td>
                                     <td>
-                                        <button className="update-btn" onClick={() => handleUpdate(q.id)}>Update</button>
+                                        <button className="update-btn" onClick={() => handleUpdate(q)}>Update</button>
                                         <button className="delete-btn" onClick={() => handleDelete(q.id)}>Delete</button>
                                     </td>
                                 </tr>

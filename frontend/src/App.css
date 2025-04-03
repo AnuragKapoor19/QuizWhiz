@@ -1024,3 +1024,77 @@ tr:nth-child(even) {
         white-space: nowrap;
     }
 }
+
+/*Update Question Page */
+
+.update-question-page {
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    max-height: 100vh;
+    background-image: linear-gradient(to bottom right, red 50%, white 50%);
+}
+
+.update-form-container {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-direction: column;
+    width: 350px;
+    height: fit-content;
+    margin-top: 30px;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 20px;
+    background-image: linear-gradient(to bottom left, white 50%, red 50%);
+    height: 80vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.update-form h1 {
+    color: red;
+    font-size: 2rem;
+    font-weight: bolder;
+    font-family: cursive;
+    margin: 0;
+    text-align: center;
+}
+
+.update-form label{
+    font-size: large;
+    font-weight: bolder;
+    margin-top: 20px;
+}
+
+.update-form input,
+select {
+    padding: 5px;
+    outline: none;
+    font-size: large;
+    font-weight: bold;
+    font-family: serif;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.update-question-btn{
+    text-align: center;
+}
+
+.update-form button{
+    font-size: larger;
+    font-family: serif;
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid black;
+    color: red;
+    font-weight: bolder;
+    margin: 20px 0 10px 0;
+    width: fit-content;
+}
