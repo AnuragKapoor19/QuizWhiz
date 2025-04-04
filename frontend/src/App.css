@@ -7,7 +7,7 @@ body {
     height: 100vh;
     width: 100vw;
     background-image: linear-gradient(158deg, red 50%, white 50%);
-    position: relative;
+    /* position: relative; */
     overflow: hidden;
 }
 
@@ -242,12 +242,13 @@ body {
     font-size: larger;
     letter-spacing: 2px;
     margin-top: 8px;
+    text-align: center;
 }
 
 /* Login Page */
 
 .login-page {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     background-image: linear-gradient(158deg, red 50%, white 50%);
     display: flex;
@@ -340,7 +341,7 @@ a {
 /* Quiz Options */
 
 .quiz-container {
-    min-height: 100vh;
+    height: 120vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -962,7 +963,7 @@ tbody tr:nth-child(even) {
     position: relative;
 }
 
-.add-question{
+.add-question {
     position: absolute;
     background-color: red;
     color: white;
@@ -975,7 +976,7 @@ tbody tr:nth-child(even) {
     cursor: pointer;
 }
 
-.add-question:active{
+.add-question:active {
     transform: scale(1.2);
 }
 
@@ -1083,7 +1084,7 @@ tr:nth-child(even) {
     text-align: center;
 }
 
-.update-form label{
+.update-form label {
     font-size: large;
     font-weight: bolder;
     margin-top: 20px;
@@ -1101,11 +1102,11 @@ select {
     border-radius: 5px;
 }
 
-.update-question-btn{
+.update-question-btn {
     text-align: center;
 }
 
-.update-form button{
+.update-form button {
     font-size: larger;
     font-family: serif;
     border-radius: 20px;
@@ -1115,4 +1116,54 @@ select {
     font-weight: bolder;
     margin: 20px 0 10px 0;
     width: fit-content;
+}
+
+/* Responsive */
+
+@media screen and (max-width: 768px) {
+    .welcome{
+        right: 30px;
+        top: 51%;
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+
+    .start{
+        margin: 15rem 5%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .welcome{
+        right: 10px;
+        word-break: break-all;
+    }
+
+    .start{
+        margin: 15rem 5%;
+    }
+
+    .logo-container{
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo{
+        font-size: 2rem;
+    }
+
+    .line{
+        font-size: small;
+    }
+
+    .user{
+        padding: 5px;
+    }
+
+    .name{
+        font-size: larger;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 }

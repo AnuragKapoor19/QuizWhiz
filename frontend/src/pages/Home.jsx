@@ -42,7 +42,6 @@ function Home() {
         <>
             <div className='home'>
                 <Header />
-
                 <div className='start'>
                     <button onClick={handleClick}><span id='one'>Start</span><span id='two'>Now</span></button>
                 </div>
@@ -50,9 +49,7 @@ function Home() {
                 <div className='welcome'>
                     <span>Welcome to QuizWhiz – The Ultimate Trivia Challenge! Ready to put your knowledge to the test?</span>
                 </div>
-
                 <Footer />
-
             </div>
         </>
     )
