@@ -87,8 +87,8 @@ function UpdateQuestion() {
                         </div>
                     </form>
                 </div>
+                <Footer />
             </div>
-            <Footer />
         </>
     )
 }

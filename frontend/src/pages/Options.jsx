@@ -33,10 +33,10 @@ const QuizOptions = () => {
 
     return (
         <>
-            <Header />
             <div className="quiz-container">
-                <h1 className="quiz-title">QuizWhiz - Get Ready!</h1>
+                <Header />
                 <div className="quiz-box">
+                    <h1 className="quiz-title">QuizWhiz - Get Ready!</h1>
                     <form className="quiz-form" onSubmit={handleSubmit}>
                         <div className="quiz-group">
                             <label className="quiz-label">Select Category:</label>
@@ -65,8 +65,8 @@ const QuizOptions = () => {
                         <button type="submit" className="quiz-button">Start Quiz</button>
                     </form>
                 </div>
+                <Footer />
             </div>
-            <Footer />
         </>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import axios from 'axios';
+import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useNavigate } from "react-router-dom";
 import { ContextState } from "../ContextApi";
@@ -82,9 +83,9 @@ const Dashboard = () => {
                             </ResponsiveContainer>
                         </section>
                     </main>
+                    <Footer />
                 </div>
             }
-            <Footer />
         </>
     );
 };

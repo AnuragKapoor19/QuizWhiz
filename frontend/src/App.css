@@ -7,7 +7,7 @@ body {
     height: 100vh;
     width: 100vw;
     background-image: linear-gradient(158deg, red 50%, white 50%);
-    /* position: relative; */
+    position: relative;
     overflow: hidden;
 }
 
@@ -348,18 +348,21 @@ a {
     justify-content: center;
     background-image: linear-gradient(158deg, red 50%, white 50%);
     color: white;
+    position: relative;
 }
 
 .quiz-title {
     font-size: 2.5rem;
     font-weight: bold;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
+    text-align: center;
+    margin: 1rem 0;
 }
 
 .quiz-box {
     width: 100%;
     max-width: 400px;
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     background-color: red;
     color: white;
     border-radius: 20px;
@@ -561,18 +564,20 @@ a {
 }
 
 #score {
-    font-size: 2rem;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 3rem;
+    font-family: cursive;
     margin: 10px 0;
     background-color: black;
-    color: white;
+    color: yellow;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
+    font-weight: bolder;
 }
 
 #greet {
     font-size: large;
     font-family: sans-serif;
+    text-align: center;
 }
 
 #home {
@@ -694,6 +699,10 @@ a {
     font-family: Arial, sans-serif;
     color: red;
     background-image: radial-gradient(white, red);
+}
+
+.leaderboard-page h1{
+    text-align: center;
 }
 
 .leaderboard-title {
@@ -827,14 +836,15 @@ h2 {
 /* Admin Dashboard Styles */
 .dashboard-container {
     display: flex;
-    height: 100vh;
-    background-color: white;
+    min-height: 100vh;
+    position: relative;
 }
 
 /* Main Dashboard */
 .dashboard-main {
     flex-grow: 1;
     padding: 20px;
+    margin-bottom: 80px;
 }
 
 .dashboard-header {
@@ -981,7 +991,7 @@ tbody tr:nth-child(even) {
 }
 
 h2 {
-    color: #d32f2f;
+    color: red;
     margin-bottom: 20px;
 }
 
@@ -992,7 +1002,7 @@ table {
 }
 
 thead {
-    background: #d32f2f;
+    background: red;
     color: white;
 }
 
@@ -1028,7 +1038,7 @@ tr:nth-child(even) {
 }
 
 .delete-btn {
-    background: #d32f2f;
+    background: red;
     color: white;
 }
 
@@ -1050,8 +1060,9 @@ tr:nth-child(even) {
     display: flex;
     justify-content: center;
     /* align-items: center; */
-    max-height: 100vh;
+    min-height: 100vh;
     background-image: linear-gradient(to bottom right, red 50%, white 50%);
+    position: relative;
 }
 
 .update-form-container {
@@ -1059,7 +1070,7 @@ tr:nth-child(even) {
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
-    width: 350px;
+    width: 70vw;
     height: fit-content;
     margin-top: 30px;
 }
@@ -1131,6 +1142,19 @@ select {
     .start{
         margin: 15rem 5%;
     }
+
+    .q-container{
+        width: 80vw;
+    }
+
+    .timer-container{
+        justify-content: end;
+    }
+
+    .timer{
+        margin-right: 20px;
+        margin-top: 10px;
+    }
 }
 
 @media screen and (max-width: 480px) {
@@ -1165,5 +1189,23 @@ select {
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .quiz-container{
+        justify-content: start;
+        height: 100vh;
+    }
+
+    .quiz-box{
+        width: 70vw;
+        margin-top: 50%;
+    }
+
+    .quiz-title{
+        text-align: center;
+    }
+
+    .q-container{
+        width: 90vw;
     }
 }
