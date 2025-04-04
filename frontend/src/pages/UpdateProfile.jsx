@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { ContextState } from '../ContextApi';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import toast from "react-hot-toast";
 
 const UpdateProfile = () => {
     const { user } = ContextState();
@@ -24,7 +25,7 @@ const UpdateProfile = () => {
             }
 
             console.log(data.message);
-            alert("Profile Updated Successfully!");
+            toast.success("Profile Updated Successfully!");
             navigate('/');
 
         } catch (error) {

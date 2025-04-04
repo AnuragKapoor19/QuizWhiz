@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Logo from '../components/Logo'
+import Logo from '../components/Logo';
 import { BsTrophyFill } from "react-icons/bs";
 import Footer from '../components/Footer'
 import { ContextState } from '../ContextApi';

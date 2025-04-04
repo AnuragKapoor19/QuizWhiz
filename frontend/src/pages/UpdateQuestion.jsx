@@ -3,6 +3,7 @@ import Footer from '../components/Footer';
 import { ContextState } from '../ContextApi';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function UpdateQuestion() {
     const Categories = ['Science & Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
@@ -27,7 +28,7 @@ function UpdateQuestion() {
                 return console.log(data.message);
             }
 
-            alert(data.message);
+            toast.success(data.message);
             navigate('/admin/dashboard');
         } catch (error) {
             console.log(error.message);

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import Logo from '../components/Logo'
 import axios from 'axios';
 import { ContextState } from '../ContextApi';
+import toast from 'react-hot-toast';
 
 function SignUp() {
     const [credentials, setcredentials] = useState({ name: '', email: '', password: '', confirm_password: '' });
@@ -25,6 +26,7 @@ function SignUp() {
 
             await setuser(data.user)
             await setauthenticated(true)
+            toast.success(data.message)
             navigate('/')
         }
         else {

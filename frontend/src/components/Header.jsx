@@ -3,6 +3,7 @@ import { ContextState } from '../ContextApi'
 import { Link, useNavigate } from 'react-router-dom';
 import { MdAccountCircle } from 'react-icons/md';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const Header = () => {
     const { authenticated, setauthenticated, user, setuser } = ContextState();
@@ -17,7 +18,7 @@ const Header = () => {
                 return console.log(data.message);
             }
 
-            alert(data.message);
+            toast.success(data.message);
             await settoggle(false);
             await setauthenticated(false);
             await setuser(null);

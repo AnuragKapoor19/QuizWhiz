@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import { ContextState } from "../ContextApi";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AdminQuestions = () => {
     const { allQuestions, setupdateQuestion } = ContextState();
@@ -17,7 +18,7 @@ const AdminQuestions = () => {
                 return console.log(data.message);
             }
 
-            alert(data.message)
+            toast.success(data.message);
             navigate('/admin/dashboard');
 
         } catch (error) {

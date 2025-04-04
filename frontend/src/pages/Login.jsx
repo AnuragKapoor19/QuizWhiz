@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ContextState } from '../ContextApi';
 import Logo from '../components/Logo';
+import toast from 'react-hot-toast';
 
 function Login() {
   const [credentials, setcredentials] = useState({ email: '', password: '' });
@@ -24,6 +25,7 @@ function Login() {
 
       await setauthenticated(true);
       await setuser(data.user);
+      toast.success(data.message);
       navigate('/');
     } catch (error) {
       console.log(error.message);
