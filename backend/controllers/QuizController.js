@@ -1,4 +1,5 @@
 const Quiz = require("../models/Quiz");
+const Sequelize = require('../config/db');
 
 const addQuestion = async (req, res) => {
     try {
@@ -41,7 +42,11 @@ const getQuestions = async (req, res) => {
     try {
         const { category, difficulty, limit } = req.query;
 
-        const questions = await Quiz.findAll({ where: { category: category, difficulty: difficulty }, limit: parseInt(limit) })
+        const questions = await Quiz.findAll({
+            where: { category: category, difficulty: difficulty },
+            order: Sequelize.literal('RAND()'),
+            limit: parseInt(limit)
+        })
 
         if (questions.length > 0) {
             return res.status(200).json({
