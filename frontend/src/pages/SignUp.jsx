@@ -18,7 +18,7 @@ function SignUp() {
         e.preventDefault();
 
         if (credentials.password === credentials.confirm_password) {
-            const { data } = await axios.post('http://localhost:5000/api/v1/signup', { username: credentials.name, email: credentials.email, password: credentials.password }, { withCredentials: true });
+            const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/signup`, { username: credentials.name, email: credentials.email, password: credentials.password }, { withCredentials: true });
 
             if (!data.success) {
                 return console.log(data.message);

@@ -18,7 +18,7 @@ const QuizOptions = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.get(`http://localhost:5000/api/v1/questions?category=${credentials.category}&difficulty=${String(credentials.difficulty).toLowerCase()}&limit=${credentials.limit}`, { withCredentials: true });
+            const { data } = await axios.get(`${import.meta.env.VITE_PRO_API_URL}/api/v1/questions?category=${credentials.category}&difficulty=${String(credentials.difficulty).toLowerCase()}&limit=${credentials.limit}`, { withCredentials: true });
 
             if (!data.success) {
                 return console.log(data.message)

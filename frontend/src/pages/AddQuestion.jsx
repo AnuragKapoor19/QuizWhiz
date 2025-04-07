@@ -18,7 +18,7 @@ function AddQuestion() {
 
         try {
             const { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category } = credentials;
-            const { data } = await axios.post(`http://localhost:5000/api/v1/question/add`, { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category }, { withCredentials: true, 'Content-Type': 'application/json' })
+            const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/question/add`, { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category }, { withCredentials: true, 'Content-Type': 'application/json' })
 
             if (!data.success) {
                 return console.log(data.message);

@@ -17,7 +17,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post('http://localhost:5000/api/v1/login', { email: credentials.email, password: credentials.password }, { withCredentials: true });
+      const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/login`, { email: credentials.email, password: credentials.password }, { withCredentials: true });
 
       if (!data.success) {
         return console.log(data.message);

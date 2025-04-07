@@ -12,7 +12,7 @@ const AdminQuestions = () => {
 
     const handleDelete = async (id) => {
         try {
-            const { data } = await axios.delete(`http://localhost:5000/api/v1/question/${id}`, { withCredentials: true });
+            const { data } = await axios.delete(`${import.meta.env.VITE_PRO_API_URL}/api/v1/question/${id}`, { withCredentials: true });
 
             if (!data.success) {
                 return console.log(data.message);

@@ -18,7 +18,7 @@ const UpdateProfile = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await axios.put('http://localhost:5000/api/v1/me/update', { username: credentials.name, email: credentials.email }, { 'Content-Type': 'application/json', withCredentials: true });
+            const { data } = await axios.put(`${import.meta.env.VITE_PRO_API_URL}/api/v1/me/update`, { username: credentials.name, email: credentials.email }, { 'Content-Type': 'application/json', withCredentials: true });
 
             if (!data.success) {
                 return console.log(data.message);

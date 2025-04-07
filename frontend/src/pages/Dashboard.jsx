@@ -12,7 +12,7 @@ const Dashboard = () => {
 
     const getAllUsers = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/v1/admin/users', { withCredentials: true });
+            const { data } = await axios.get(`${import.meta.env.VITE_PRO_API_URL}/api/v1/admin/users`, { withCredentials: true });
 
             if (!data.success) {
                 return console.log(data.message);
@@ -27,7 +27,7 @@ const Dashboard = () => {
 
     const getAllQuestions = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/v1/admin/questions', { withCredentials: true });
+            const { data } = await axios.get(`${import.meta.env.VITE_PRO_API_URL}/api/v1/admin/questions`, { withCredentials: true });
 
             if (!data.success) {
                 return console.log(data.message);

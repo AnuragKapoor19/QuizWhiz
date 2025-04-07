@@ -11,7 +11,7 @@ function Home() {
 
     const getUser = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/v1/me', { withCredentials: true });
+            const { data } = await axios.get(`${import.meta.env.VITE_PRO_API_URL}/api/v1/me`, { withCredentials: true });
             if (data.success) {
                 setuser(data.user)
                 setauthenticated(true);
