@@ -380,9 +380,9 @@ h3 {
 }
 
 .btn-container {
-    text-align: center;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .btn-container button {

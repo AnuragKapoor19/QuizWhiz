@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
+import { ScaleLoader } from 'react-spinners';
 import Footer from '../components/Footer';
 import { ContextState } from '../ContextApi';
 import axios from 'axios'
 import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
-import { Triangle } from 'react-loader-spinner'
 
 function Home() {
     const { authenticated, setauthenticated, setuser } = ContextState();
@@ -67,15 +67,7 @@ function Home() {
                         <span>For curious minds and trivia lovers.</span>
 
                         <h3>🌟 Good things take time — your quiz is on the way!</h3>
-                        <Triangle
-                            visible={true}
-                            height="100"
-                            width="100"
-                            color="red"
-                            ariaLabel="triangle-loading"
-                            wrapperStyle={{}}
-                            wrapperClass=""
-                        />
+                        <ScaleLoader color='red' />
                     </div>
                     <div className='welcome-footer'>
                         <span id='copyright'>© 2025 QuizWhiz | Developed by Anurag Kapoor</span>

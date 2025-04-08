@@ -4,8 +4,8 @@ import Logo from '../components/Logo'
 import axios from 'axios';
 import { ContextState } from '../ContextApi';
 import toast from 'react-hot-toast';
-import { TailSpin } from 'react-loader-spinner';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { ClipLoader } from 'react-spinners';
 
 function SignUp() {
     const [credentials, setcredentials] = useState({ name: '', email: '', password: '', confirm_password: '' });
@@ -96,16 +96,7 @@ function SignUp() {
                                 <button type='submit'>
                                     {loading
                                         ?
-                                        <TailSpin
-                                            visible={loading}
-                                            height="20"
-                                            width="100"
-                                            color="white"
-                                            ariaLabel="tail-spin-loading"
-                                            radius="1"
-                                            wrapperStyle={{}}
-                                            wrapperClass=""
-                                        />
+                                        <ClipLoader color='white' size={25}/>
                                         :
                                         'Create Account'
                                     }

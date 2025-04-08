@@ -4,8 +4,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import { ContextState } from '../ContextApi';
 import Logo from '../components/Logo';
 import toast from 'react-hot-toast';
-import { TailSpin } from 'react-loader-spinner';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { ClipLoader } from 'react-spinners';
 
 function Login() {
   const [credentials, setcredentials] = useState({ email: '', password: '' });
@@ -69,16 +69,7 @@ function Login() {
                 <button type='submit'>
                   {loading
                     ?
-                    <TailSpin
-                      visible={loading}
-                      height="20"
-                      width="100"
-                      color="white"
-                      ariaLabel="tail-spin-loading"
-                      radius="1"
-                      wrapperStyle={{}}
-                      wrapperClass=""
-                    />
+                    <ClipLoader color='white' size={25}/>
                     :
                     'Login'
                   }

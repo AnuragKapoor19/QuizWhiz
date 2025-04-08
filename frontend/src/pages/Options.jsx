@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { ContextState } from '../ContextApi';
 import axios from 'axios';
-import { TailSpin } from 'react-loader-spinner';
+import { SyncLoader } from 'react-spinners';
 
 const QuizOptions = () => {
     const navigate = useNavigate()
@@ -70,16 +70,7 @@ const QuizOptions = () => {
                         <button type="submit" className="quiz-button">
                             {loading
                                 ?
-                                <TailSpin
-                                    visible={loading}
-                                    height="20"
-                                    width="100"
-                                    color="red"
-                                    ariaLabel="tail-spin-loading"
-                                    radius="1"
-                                    wrapperStyle={{}}
-                                    wrapperClass=""
-                                />
+                                <SyncLoader color='red' />
                                 :
                                 'Start Quiz'
                             }
