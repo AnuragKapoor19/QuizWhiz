@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-    const { authenticated, setauthenticated, user, setuser } = ContextState();
+    const { authenticated, setauthenticated, setuser } = ContextState();
     const [loading, setloading] = useState(true);
     const navigate = useNavigate();
 
@@ -34,7 +34,7 @@ function Home() {
     }
 
     useEffect(() => {
-        if (!user) {
+        if (!authenticated) {
             getUser();
         }
         else {
