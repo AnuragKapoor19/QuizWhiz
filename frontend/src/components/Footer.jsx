@@ -4,7 +4,7 @@ function Footer() {
     return (
         <>
             <div className='footer'>
-                <span>© 2025 QuizWhiz. All rights reserved.</span>
+                <span id='copyright'>© 2025 QuizWhiz | Developed by Anurag Kapoor</span>
                 <span id='big'>Challenge your mind, one quiz at a time!</span>
             </div>
         </>

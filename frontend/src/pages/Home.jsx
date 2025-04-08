@@ -6,7 +6,7 @@ import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-    const { authenticated, setauthenticated, user, setuser } = ContextState();
+    const { authenticated, setauthenticated, setuser } = ContextState();
     const navigate = useNavigate();
 
     const getUser = async () => {

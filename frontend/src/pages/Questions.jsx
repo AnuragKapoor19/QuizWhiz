@@ -115,6 +115,8 @@ const Questions = () => {
                                 </div>
                             }
 
+                            <Footer />
+
                         </div>
 
                         {!finished &&
@@ -125,7 +127,6 @@ const Questions = () => {
                             </div>
                         }
 
-                        <Footer />
                     </>
                     :
                     <h1>No question to show !</h1>
