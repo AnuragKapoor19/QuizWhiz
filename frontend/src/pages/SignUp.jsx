@@ -96,7 +96,7 @@ function SignUp() {
                                 <button type='submit'>
                                     {loading
                                         ?
-                                        <ClipLoader color='white' size={25}/>
+                                        <ClipLoader color='black' size={20}/>
                                         :
                                         'Create Account'
                                     }

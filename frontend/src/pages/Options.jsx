@@ -9,7 +9,7 @@ import { SyncLoader } from 'react-spinners';
 const QuizOptions = () => {
     const navigate = useNavigate()
     const { setquestions } = ContextState();
-    const Categories = ['Science&Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
+    const Categories = ['Science & Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
     const [credentials, setcredentials] = useState({ category: 'General Knowledge', limit: 5, difficulty: 'Easy' });
     const [loading, setloading] = useState(false)
 
@@ -70,7 +70,7 @@ const QuizOptions = () => {
                         <button type="submit" className="quiz-button">
                             {loading
                                 ?
-                                <SyncLoader color='red' />
+                                <SyncLoader color='black' />
                                 :
                                 'Start Quiz'
                             }

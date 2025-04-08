@@ -7,7 +7,7 @@ import Header from '../components/Header';
 import { useNavigate } from 'react-router-dom';
 
 function Home() {
-    const { authenticated, setauthenticated, setuser } = ContextState();
+    const { authenticated, setauthenticated, user, setuser } = ContextState();
     const [loading, setloading] = useState(true);
     const navigate = useNavigate();
 
@@ -18,16 +18,12 @@ function Home() {
             if (data.success) {
                 setuser(data.user)
                 setauthenticated(true);
-                setTimeout(() => {
-                    setloading(false);
-                }, 5000);
+                setloading(false);
             }
             else {
                 setauthenticated(false);
                 setuser(null)
-                setTimeout(() => {
-                    setloading(false);
-                }, 5000);
+                setloading(false);
             }
         } catch (error) {
             console.log(error.message);
@@ -38,7 +34,12 @@ function Home() {
     }
 
     useEffect(() => {
-        getUser();
+        if (!user) {
+            getUser();
+        }
+        else {
+            setloading(false);
+        }
     }, [])
 
     const handleClick = () => {
