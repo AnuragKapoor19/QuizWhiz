@@ -4,12 +4,14 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import { ContextState } from '../ContextApi';
 import axios from 'axios';
+import { TailSpin } from 'react-loader-spinner';
 
 const QuizOptions = () => {
     const navigate = useNavigate()
     const { setquestions } = ContextState();
-    const Categories = ['Science & Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
+    const Categories = ['Science&Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
     const [credentials, setcredentials] = useState({ category: 'General Knowledge', limit: 5, difficulty: 'Easy' });
+    const [loading, setloading] = useState(false)
 
     const handleChange = (e) => {
         setcredentials({ ...credentials, [e.target.name]: e.target.value })
@@ -18,6 +20,7 @@ const QuizOptions = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            setloading(true)
             const { data } = await axios.get(`${import.meta.env.VITE_PRO_API_URL}/api/v1/questions?category=${credentials.category}&difficulty=${String(credentials.difficulty).toLowerCase()}&limit=${credentials.limit}`, { withCredentials: true });
 
             if (!data.success) {
@@ -25,9 +28,11 @@ const QuizOptions = () => {
             }
 
             await setquestions(data.questions);
+            setloading(false)
             navigate('/questions')
         } catch (error) {
             console.log(error.message)
+            setloading(false)
         }
     }
 
@@ -62,7 +67,23 @@ const QuizOptions = () => {
                                 <option>Hard</option>
                             </select>
                         </div>
-                        <button type="submit" className="quiz-button">Start Quiz</button>
+                        <button type="submit" className="quiz-button">
+                            {loading
+                                ?
+                                <TailSpin
+                                    visible={loading}
+                                    height="20"
+                                    width="100"
+                                    color="red"
+                                    ariaLabel="tail-spin-loading"
+                                    radius="1"
+                                    wrapperStyle={{}}
+                                    wrapperClass=""
+                                />
+                                :
+                                'Start Quiz'
+                            }
+                        </button>
                     </form>
                 </div>
                 <Footer />

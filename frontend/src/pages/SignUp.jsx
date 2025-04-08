@@ -4,11 +4,16 @@ import Logo from '../components/Logo'
 import axios from 'axios';
 import { ContextState } from '../ContextApi';
 import toast from 'react-hot-toast';
+import { TailSpin } from 'react-loader-spinner';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 function SignUp() {
     const [credentials, setcredentials] = useState({ name: '', email: '', password: '', confirm_password: '' });
     const { setuser, setauthenticated } = ContextState();
     const navigate = useNavigate();
+    const [loading, setloading] = useState(false)
+    const [show, setshow] = useState(false)
+    const [showC, setshowC] = useState(false)
 
     const handleChange = (e) => {
         setcredentials({ ...credentials, [e.target.name]: e.target.value })
@@ -16,21 +21,29 @@ function SignUp() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            setloading(true);
 
-        if (credentials.password === credentials.confirm_password) {
-            const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/signup`, { username: credentials.name, email: credentials.email, password: credentials.password }, { withCredentials: true });
+            if (credentials.password === credentials.confirm_password) {
+                const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/signup`, { username: credentials.name, email: credentials.email, password: credentials.password }, { withCredentials: true });
 
-            if (!data.success) {
-                return console.log(data.message);
+                if (!data.success) {
+                    return console.log(data.message);
+                }
+
+                await setuser(data.user)
+                await setauthenticated(true)
+                setloading(false)
+                toast.success(data.message)
+                navigate('/')
             }
-
-            await setuser(data.user)
-            await setauthenticated(true)
-            toast.success(data.message)
-            navigate('/')
-        }
-        else {
-            alert('Password does not match');
+            else {
+                toast.error('Password does not match');
+                setloading(false)
+            }
+        } catch (error) {
+            console.log(error.message);
+            setloading(false)
         }
 
     }
@@ -55,16 +68,48 @@ function SignUp() {
 
                             <div className="margin">
                                 <label htmlFor='password'>Password:</label>
-                                <input id='password' type='password' name='password' value={credentials.password} onChange={handleChange} required />
+                                <div className='password-container'>
+                                    <input maxLength='25' id='password' maxlength="25" type={`${show ? 'text' : 'password'}`} name='password' value={credentials.password} required onChange={handleChange} />
+                                    <div className='eye' onClick={() => setshow(!show)}>
+                                        {show
+                                            ? <FaEyeSlash size={20} />
+                                            : <FaEye size={20} />
+                                        }
+                                    </div>
+                                </div>
                             </div>
 
                             <div className='margin'>
                                 <label htmlFor='confirm-password'>Confirm Password:</label>
-                                <input id='confirm-password' type='password' name='confirm_password' value={credentials.confirm_password} onChange={handleChange} required />
+                                <div className='password-container'>
+                                    <input maxLength='25' id='confirm-password' type={`${showC ? 'text' : 'password'}`} name='confirm_password' value={credentials.confirm_password} onChange={handleChange} required />
+                                    <div className='eye' onClick={() => setshowC(!showC)}>
+                                        {showC
+                                            ? <FaEyeSlash size={20} />
+                                            : <FaEye size={20} />
+                                        }
+                                    </div>
+                                </div>
                             </div>
 
                             <div className="btn-container">
-                                <button type='submit'>Create Account</button>
+                                <button type='submit'>
+                                    {loading
+                                        ?
+                                        <TailSpin
+                                            visible={loading}
+                                            height="20"
+                                            width="100"
+                                            color="white"
+                                            ariaLabel="tail-spin-loading"
+                                            radius="1"
+                                            wrapperStyle={{}}
+                                            wrapperClass=""
+                                        />
+                                        :
+                                        'Create Account'
+                                    }
+                                </button>
                             </div>
 
                             <span>Already a User? <Link to={'/login'}>Login</Link></span>
