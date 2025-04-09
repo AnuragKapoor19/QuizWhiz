@@ -25,7 +25,7 @@ function Login() {
       const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/login`, { email: credentials.email, password: credentials.password }, { withCredentials: true });
 
       if (!data.success) {
-        return console.log(data.message);
+        return toast.error(data.message);
       }
 
       await setauthenticated(true);
@@ -69,7 +69,7 @@ function Login() {
                 <button type='submit'>
                   {loading
                     ?
-                    <ClipLoader color='black' size={20}/>
+                    <ClipLoader color='black' size={20} />
                     :
                     'Login'
                   }

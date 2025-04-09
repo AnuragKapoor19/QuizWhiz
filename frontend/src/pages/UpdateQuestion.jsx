@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 function UpdateQuestion() {
-    const Categories = ['Science & Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
+    const Categories = ['Science&Nature', 'History', 'Geography', 'Sports', 'Entertainment', 'Literature', 'Mathematics', 'Technology', 'Mythology'];
     const { updateQuestion } = ContextState();
     const navigate = useNavigate();
     const { title, question, optionA, optionB, optionC, optionD, correctAnswer, difficulty, category } = updateQuestion;

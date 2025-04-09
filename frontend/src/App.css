@@ -549,7 +549,6 @@ a {
     position: absolute;
     top: 10%;
     padding: 0 10px;
-    word-break: break-all;
 }
 
 .options {
@@ -906,6 +905,22 @@ h2 {
 }
 
 .update-btn:hover {
+    background-color: darkred;
+}
+
+.update-profile-btn {
+    background-color: red;
+    width: 100%;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.update-profile-btn:hover {
     background-color: darkred;
 }
 
@@ -1310,6 +1325,11 @@ select {
 
     .q-container {
         width: 90vw;
+    }
+
+    .question {
+        font-size: 1.5rem;
+        top: 7%;
     }
 }
 

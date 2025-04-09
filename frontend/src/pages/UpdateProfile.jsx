@@ -21,7 +21,7 @@ const UpdateProfile = () => {
             const { data } = await axios.put(`${import.meta.env.VITE_PRO_API_URL}/api/v1/me/update`, { username: credentials.name, email: credentials.email }, { 'Content-Type': 'application/json', withCredentials: true });
 
             if (!data.success) {
-                return console.log(data.message);
+                return toast(data.message);
             }
 
             console.log(data.message);
@@ -64,7 +64,7 @@ const UpdateProfile = () => {
                             />
                         </div>
 
-                        <button type="submit" className="update-btn">
+                        <button type="submit" className="update-profile-btn">
                             Update Profile
                         </button>
                     </form>
