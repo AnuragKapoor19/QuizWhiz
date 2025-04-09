@@ -21,15 +21,15 @@ const MyProfilePage = () => {
                 </div>
                 <div className="profile-stats">
                     <div className="stat">
-                        <h2 className="stat-value">10</h2>
+                        <h2 className="stat-value">Pending</h2>
                         <p>Total Quizzes</p>
                     </div>
                     <div className="stat">
-                        <h2 className="stat-value">8</h2>
+                        <h2 className="stat-value">Pending</h2>
                         <p>Completed</p>
                     </div>
                     <div className="stat">
-                        <h2 className="stat-value">95</h2>
+                        <h2 className="stat-value">Pending</h2>
                         <p>High Score</p>
                     </div>
                 </div>

@@ -21,7 +21,7 @@ const QuizOptions = () => {
         e.preventDefault();
         try {
             setloading(true)
-            const { data } = await axios.get(`${import.meta.env.VITE_PRO_API_URL}/api/v1/questions?category=${credentials.category}&difficulty=${String(credentials.difficulty).toLowerCase()}&limit=${credentials.limit}`, { withCredentials: true });
+            const { data } = await axios.get(`${import.meta.env.VITE_PRO_API_URL}/api/v1/questions?category=${credentials.category === 'Science&Nature' ? 'Science%26Nature' : credentials.category}&difficulty=${String(credentials.difficulty).toLowerCase()}&limit=${credentials.limit}`, { withCredentials: true });
 
             if (!data.success) {
                 return console.log(data.message)
