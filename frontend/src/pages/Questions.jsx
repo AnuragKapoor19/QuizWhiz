@@ -73,7 +73,7 @@ const Questions = () => {
                     <>
                         <div className='q-page'>
                             <Logo />
-                            {!finished
+                            {finished
                                 ?
                                 <div className="t-container">
                                     <i id='trophy'><BsTrophyFill size={80} /></i>
