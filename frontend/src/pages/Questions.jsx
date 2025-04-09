@@ -73,9 +73,9 @@ const Questions = () => {
                     <>
                         <div className='q-page'>
                             <Logo />
-                            {finished
+                            {!finished
                                 ?
-                                <div className="q-container">
+                                <div className="t-container">
                                     <i id='trophy'><BsTrophyFill size={80} /></i>
                                     <span id='congo'>Congratulations</span>
                                     <span id='score-heading'>

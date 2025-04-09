@@ -14,12 +14,12 @@ body {
     overflow: hidden;
 }
 
-.l-logo{
+.l-logo {
     color: white;
     font-size: 4rem;
 }
 
-.welcome-container{
+.welcome-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -32,23 +32,23 @@ h3 {
     text-align: center;
 }
 
-.loading-page h1{
+.loading-page h1 {
     font-size: 2.5rem;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 
-.loading-page span{
+.loading-page span {
     font-size: larger;
     padding: 0 20px;
     font-family: sans-serif;
 }
 
-.loading-page h3{
+.loading-page h3 {
     font-size: 1.3rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.welcome-footer{
+.welcome-footer {
     background-color: red;
     padding: 10px;
     color: white;
@@ -366,11 +366,11 @@ h3 {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
-.password-container{
+.password-container {
     position: relative;
 }
 
-.eye{
+.eye {
     position: absolute;
     color: black;
     right: 0;
@@ -521,7 +521,8 @@ a {
     position: relative;
 }
 
-.q-container {
+.q-container,
+.t-container {
     background-image: linear-gradient(158deg, white 50%, red 50%);
     background-position: center;
     background-repeat: no-repeat;
@@ -535,6 +536,10 @@ a {
     flex-direction: column;
     position: relative;
     border: 5px solid black;
+}
+
+.t-container {
+    justify-content: center;
 }
 
 .question {
@@ -1271,7 +1276,7 @@ select {
         font-size: 2rem;
     }
 
-    .l-logo{
+    .l-logo {
         font-size: 2rem;
     }
 
