@@ -25,10 +25,15 @@ function Login() {
       const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/login`, { email: credentials.email, password: credentials.password }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } });
 
       if (!data.success) {
-        toast.error(data.message);
-        await setauthenticated(false);
-        await setuser({});
-        setloading(false);
+        try {
+          toast.error(data.message);
+          await setauthenticated(false);
+          await setuser({});
+          setloading(false);
+        } catch (error) {
+          toast.error(data.error.message);
+          console.log(data.message)
+        }
       }
       else {
         await setauthenticated(true);
