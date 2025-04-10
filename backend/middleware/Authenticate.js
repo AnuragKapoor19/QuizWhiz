@@ -11,7 +11,7 @@ const authenticate = async (req, res, next) => {
             });
         }
 
-        const token = await req.cookies.token
+        const token = req.cookies.token;
 
         const decoded = await jwt.verify(token, process.env.JWT_SECRET_KEY);
 

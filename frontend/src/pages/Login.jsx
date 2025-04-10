@@ -26,6 +26,8 @@ function Login() {
 
       if (!data.success) {
         toast.error(data.message);
+        await setauthenticated(false);
+        await setuser({});
         setloading(false);
         return;
       }

@@ -4,7 +4,7 @@ const Context = createContext();
 
 const ContextProvider = ({ children }) => {
     const [authenticated, setauthenticated] = useState(false)
-    const [user, setuser] = useState({ role: 'admin' })
+    const [user, setuser] = useState({})
     const [questions, setquestions] = useState([])
     const [score, setscore] = useState(0)
     const [users, setusers] = useState([])
