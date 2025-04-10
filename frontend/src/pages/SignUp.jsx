@@ -30,21 +30,21 @@ function SignUp() {
                 if (!data.success) {
                     toast.error(data.message);
                     setloading(false);
+                    return;
                 }
-                else {
-                    await setuser(data.user)
-                    await setauthenticated(true)
-                    setloading(false)
-                    toast.success(data.message)
-                    navigate('/')
-                }
+                await setuser(data.user)
+                await setauthenticated(true)
+                setloading(false)
+                toast.success(data.message)
+                navigate('/')
             }
             else {
                 toast.error('Password does not match');
                 setloading(false)
             }
         } catch (error) {
-            console.log(error.message);
+            toast.error(error.response?.data?.message || "Signup failed!");
+            console.log(error);
             setloading(false)
         }
 

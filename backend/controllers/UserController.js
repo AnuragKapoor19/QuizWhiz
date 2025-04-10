@@ -40,7 +40,7 @@ const createUser = async (req, res) => {
             .json({
                 success: true,
                 user: newUser,
-                message: "Account Created!"
+                message: "Welcome to QuizWhiz!"
             })
 
     } catch (error) {
@@ -88,7 +88,7 @@ const login = async (req, res) => {
             .json({
                 success: true,
                 user: userExists,
-                message: "LoggedIn successfully!"
+                message: "Welcome Back!"
             })
 
     } catch (error) {
