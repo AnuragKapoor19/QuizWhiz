@@ -1,5 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -34,6 +35,7 @@ function App() {
           <Route exact path='/admin/add/question' element={<AddQuestion />} />
         </Routes>
       </Router>
+      <Toaster position="top-center" reverseOrder={false} />
     </>
   )
 }

@@ -29,8 +29,6 @@ function SignUp() {
 
                 if (!data.success) {
                     toast.error(data.message);
-                    setauthenticated(false);
-                    setuser({});
                     setloading(false);
                 }
                 else {
