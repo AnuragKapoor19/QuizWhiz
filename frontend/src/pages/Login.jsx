@@ -1,9 +1,9 @@
-import axios from 'axios';
 import React, { useState } from 'react'
+import axios from 'axios';
+import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom'
 import { ContextState } from '../ContextApi';
 import Logo from '../components/Logo';
-import toast from 'react-hot-toast';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ClipLoader } from 'react-spinners';
 
@@ -22,10 +22,10 @@ function Login() {
     e.preventDefault();
     try {
       setloading(true)
-      const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/login`, { email: credentials.email, password: credentials.password }, { withCredentials: true });
+      const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/login`, { email: credentials.email, password: credentials.password }, { withCredentials: true, 'Content-Type': 'application/json' });
 
       if (!data.success) {
-        return toast.error(data.message);
+        return console.log(data.message);
       }
 
       await setauthenticated(true);
