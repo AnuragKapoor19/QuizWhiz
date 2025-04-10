@@ -22,10 +22,10 @@ function Login() {
     e.preventDefault();
     try {
       setloading(true)
-      const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/login`, { email: credentials.email, password: credentials.password }, { withCredentials: true, 'Content-Type': 'application/json' });
+      const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/login`, { email: credentials.email, password: credentials.password }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } });
 
       if (!data.success) {
-        return console.log(data.message);
+        return toast.error(data.message);
       }
 
       await setauthenticated(true);

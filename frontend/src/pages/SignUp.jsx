@@ -25,7 +25,7 @@ function SignUp() {
             setloading(true);
 
             if (credentials.password === credentials.confirm_password) {
-                const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/signup`, { username: credentials.name, email: credentials.email, password: credentials.password }, { withCredentials: true });
+                const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/signup`, { username: credentials.name, email: credentials.email, password: credentials.password }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } });
 
                 if (!data.success) {
                     return toast.error(data.message);
@@ -96,7 +96,7 @@ function SignUp() {
                                 <button type='submit'>
                                     {loading
                                         ?
-                                        <ClipLoader color='black' size={20}/>
+                                        <ClipLoader color='black' size={20} />
                                         :
                                         'Create Account'
                                     }
