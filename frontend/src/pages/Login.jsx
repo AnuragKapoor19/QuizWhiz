@@ -27,17 +27,19 @@ function Login() {
       if (!data.success) {
         toast.error(data.message);
         setloading(false);
+        return;
       }
-      else {
-        await setauthenticated(true);
-        await setuser(data.user);
-        setloading(false)
-        toast.success(data.message);
-        navigate('/');
-      }
-    } catch (error) {
-      console.log(error.message);
+
+      await setauthenticated(true);
+      await setuser(data.user);
       setloading(false)
+      toast.success(data.message);
+      navigate('/');
+
+    } catch (error) {
+      toast.error(error.response?.data?.message || "Login failed");
+      console.log(error);
+      setloading(false);
     }
   }
 
