@@ -28,7 +28,9 @@ function SignUp() {
                 const { data } = await axios.post(`${import.meta.env.VITE_PRO_API_URL}/api/v1/signup`, { username: credentials.name, email: credentials.email, password: credentials.password }, { withCredentials: true, headers: { 'Content-Type': 'application/json' } });
 
                 if (!data.success) {
-                    return toast.error(data.message);
+                    toast.error(data.message);
+                    setloading(false);
+                    return;
                 }
 
                 await setuser(data.user)
