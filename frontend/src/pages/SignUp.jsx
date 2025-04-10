@@ -29,15 +29,17 @@ function SignUp() {
 
                 if (!data.success) {
                     toast.error(data.message);
+                    setauthenticated(false);
+                    setuser({});
                     setloading(false);
-                    return;
                 }
-
-                await setuser(data.user)
-                await setauthenticated(true)
-                setloading(false)
-                toast.success(data.message)
-                navigate('/')
+                else {
+                    await setuser(data.user)
+                    await setauthenticated(true)
+                    setloading(false)
+                    toast.success(data.message)
+                    navigate('/')
+                }
             }
             else {
                 toast.error('Password does not match');

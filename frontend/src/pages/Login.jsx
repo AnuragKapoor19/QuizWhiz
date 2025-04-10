@@ -29,14 +29,14 @@ function Login() {
         await setauthenticated(false);
         await setuser({});
         setloading(false);
-        return;
       }
-
-      await setauthenticated(true);
-      await setuser(data.user);
-      setloading(false)
-      toast.success(data.message);
-      navigate('/');
+      else {
+        await setauthenticated(true);
+        await setuser(data.user);
+        setloading(false)
+        toast.success(data.message);
+        navigate('/');
+      }
     } catch (error) {
       console.log(error.message);
       setloading(false)
